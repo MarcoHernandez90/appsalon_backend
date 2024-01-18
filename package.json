@@ -1,0 +1,22 @@
+{
+  "name": "appsalon_backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Backend en MEVN para Appsalon",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "seed:import": "node data/seed.js --import",
+    "seed:clear": "node data/seed.js --clear"
+  },
+  "author": "Marco Antonio Hernández Nevárez",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.3"
+  }
+}
