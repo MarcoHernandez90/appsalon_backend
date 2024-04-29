@@ -37,7 +37,7 @@ const register = async (req, res) => {
     const user = new User(req.body)
     await user.save()
     res.json({
-      ms: 'Usuario creado correctamente. Revisa tu correo electrónico.'
+      msg: 'Usuario creado correctamente. Revisa tu correo electrónico.'
     })
   } catch (error) {
     return res.status(400).json({
