@@ -1,4 +1,7 @@
 import mongoose from "mongoose"
+import jwt from 'jsonwebtoken'
+import { format } from 'date-fns'
+import es from "date-fns/locale/es"
 
 function validateObjectId(id, res) {
   // Validar un object id con los tipos de mongoose
@@ -19,4 +22,16 @@ function handleNotFoundError(message, res) {
 
 const uniqueID = () => Date.now().toString(32) + Math.random().toString(32).substring(2)
 
-export { validateObjectId, handleNotFoundError, uniqueID }
+const generateJWT = (id) => {
+  const token = jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: '30d'
+  })
+
+  return token
+}
+
+function formatDate(date) {
+  return format(date, 'PPPP', { locale: es })
+}
+
+export { validateObjectId, handleNotFoundError, uniqueID, generateJWT, formatDate }

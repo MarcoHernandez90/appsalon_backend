@@ -6,6 +6,8 @@ import cors from 'cors'
 import { db } from './config/db.js'
 import servicesRoutes from './routes/servicesRoutes.js'
 import authRoutes from './routes/authRoutes.js'
+import appointmentRoutes from './routes/appointmentRoutes.js'
+import userRoutes from './routes/userRoutes.js'
 
 // Cargar variables de entorno
 dotenv.config()
@@ -42,8 +44,11 @@ app.use(cors(corsOptions))
 // Definición de rutas
 /* Podemos utilizar el middleware use de express para asignar un conjunto de
   rutas de un módulo a una ruta común */
-app.use('/api/v1/services', servicesRoutes)
-app.use('/api/v1/auth', authRoutes)
+const apiURL = '/api/v1'
+app.use(`${apiURL}/services`, servicesRoutes)
+app.use(`${apiURL}/auth`, authRoutes)
+app.use(`${apiURL}/appointments`, appointmentRoutes)
+app.use(`${apiURL}/users`, userRoutes)
 
 // Definición del puerto
 const PORT = process.env.PORT || 8000
